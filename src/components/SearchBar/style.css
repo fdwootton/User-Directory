@@ -1,0 +1,10 @@
+.search-bar {
+    text-align: center;
+    margin-top: 15px;
+}
+
+input {
+    height: 30px;
+    width: 300px;
+    font-size: 1.25em;
+}
