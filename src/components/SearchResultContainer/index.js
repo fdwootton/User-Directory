@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Header from "../Header"
 import SearchBar from "../SearchBar";
-import EmployeeTable from "../EmployeeTable";
+import ResultList from "../ResultList";
 import API from "../../utils/API";
 
 class SearchResultContainer extends Component {
@@ -44,7 +44,7 @@ class SearchResultContainer extends Component {
           handleFormSubmit={this.handleFormSubmit}
           handleInputChange={this.handleInputChange}
         />
-        <EmployeeTable results={this.state.results} />
+        <ResultList results={this.state.results} />
       </div>
     );
   }
