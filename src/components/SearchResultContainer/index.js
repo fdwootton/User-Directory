@@ -2,49 +2,68 @@ import React, { Component } from "react";
 import Header from "../Header"
 import SearchBar from "../SearchBar";
 import ResultList from "../ResultList";
-// import API from "../../utils/API";
+import API from "../../utils/API";
 
+//State management
 class SearchResultContainer extends Component {
   state = {
     search: "",
-    results: []
+    employees: [],
+    displayedEmployees: [],
   };
 
-  // When this component mounts, search the Giphy API for pictures of kittens
-  // componentDidMount() {
-  //   this.searchEmployee("kittens");
-  // }
+//Get random users
+getEmployees = () => {
+  API.search()
+    .then((results) => {
+      console.log(results);
+      this.setState({employees: results.data.results, displayedEmployees: results.data.results})
+    })
+    .catch((error) => console.log(error));
+};
 
-  // searchEmployee = query => {
-  //   API.search(query)
-  //     .then(res => this.setState({ results: res.data.data }))
-  //     .catch(err => console.log(err));
-  // };
+//Get random users when component mounts
+componentDidMount() {
+  this.getEmployees();
+}
 
-  handleInputChange = event => {
-    const name = event.target.name;
-    const value = event.target.value;
+//When user types in search bar, state changes
+handleInputChange = event => {
+  const name = event.target.name;
+  const value = event.target.value;
+  this.filterEmployees(value.toLowerCase().trim());
+  this.setState({
+    [name]: value
+  });
+};
+
+// When the form is submitted, search the random user API for `this.state.search`
+handleFormSubmit = event => {
+  event.preventDefault();
+  this.getEmployees(this.state.search);
+};
+
+//Filter employees displayed on page as user types in the search bar
+filterEmployees = (input) => {
+  if (input) {
     this.setState({
-      [name]: value
+      displayedEmployees: this.state.employees.filter((employee) => {
+        return (employee.name.last.toLowerCase().includes(input));
+      }),
     });
-  };
+  } 
+  else {
+    this.setState({ displayedEmployees: this.state.employees });
+  }
+};
 
-  // When the form is submitted, search the Giphy API for `this.state.search`
-  handleFormSubmit = event => {
-    event.preventDefault();
-    this.searchEmployee(this.state.search);
-  };
-
-  render() {
+//Render all components together
+render() {
     return (
       <div>
         <Header />
-        <SearchBar
-          search={this.state.search}
-          handleFormSubmit={this.handleFormSubmit}
-          handleInputChange={this.handleInputChange}
-        />
-        <ResultList results={this.state.results} />
+        <SearchBar value={this.state.search} handleInputChange={this.handleInputChange} handleFormSubmit={this.handleFormSubmit}/>
+        <ResultList state={this.state} filterEmployees={this.filterEmployees}/>
       </div>
     );
   }
