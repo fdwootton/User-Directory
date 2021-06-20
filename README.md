@@ -1,11 +1,11 @@
-# User-Directory
+# Employee-Directory
   ![badge](https://img.shields.io/badge/license-MIT-brightgreen)<br />
   ## **Description**
   This application utilizes React to display an employee directory.  The employees displayed are retrieved using the Random User API.
 
-  Click here to visit the deployed application on Heroku: [**User-Directory**](https://frozen-wave-08455.herokuapp.com/)
+  Click here to visit the deployed application on Heroku: [**Employee-Directory**](https://frozen-wave-08455.herokuapp.com/)
 
-  ![User-Directory](./public/directory-screenshot.png)
+  ![Employee-Directory](./public/directory-screenshot.png)
 
   ## **License**
   ![badge](https://img.shields.io/badge/license-MIT-brightgreen)<br/>
