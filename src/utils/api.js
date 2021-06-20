@@ -1,9 +1,9 @@
-import axios from "axios";
+import axios from 'axios';
 
-let GETrequest = {
-    //retrieve 20 random employees
-    searchEmployee: function() {
-        return axios.get('https://randomuser.me/api/?inc=picture,name,phone,email&results=20');
-      }
+let apiCall = {
+    //retrieve 20 random users
+      search: function() {
+      return axios.get('https://randomuser.me/api/?inc=picture,name,phone,email,dob,login&results=20&nat=us');
+    }
 }
-export default GETrequest
+export default apiCall;
