@@ -1,5 +1,7 @@
 .form-group {
+    margin: auto;
     margin-top: 15px;
     margin-bottom: 25px;
     width: 500px;
+    align-self: center; 
 }
