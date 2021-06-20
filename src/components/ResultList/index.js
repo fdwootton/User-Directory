@@ -1,38 +1,37 @@
-import React from 'react';
+import React from "react";
 
-const EmployeeTable = (props) => {
+const ResultList = (props) => {
   return (
-    <table className="table table-striped">
-        <thead>
-            <tr>
-                <th scope="col">NAME</th>
-                <th scope="col">EMAIL</th>
-                <th scope="col">PHONE</th>
-                <th scope="col">DOB</th>
+    <table className="table table-striped table-bordered table-hover">
+      <thead>
+        <tr>
+          <th scope="col"></th>
+          <th scope="col" onClick={() => {return (console.log('make sorting function'))}}>NAME</th>
+          <th scope="col">EMAIL</th>
+          <th scope="col">PHONE</th>
+        </tr>
+      </thead>
+      <tbody>
+        {props.state.displayedEmployees.map((employee) => {
+          const Image = employee.picture.thumbnail;
+          const firstName = employee.name.first;
+          const lastName = employee.name.last;
+          const Name = firstName + " " + lastName;
+          const Email = employee.email;
+          const Phone = employee.phone;
+
+          return (
+            <tr key={Name}>
+              <td><img alt={Name} src={Image} /></td>
+              <td>{Name}</td>
+              <td>{Email}</td>
+              <td>{Phone}</td>
             </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th scope="row">Mark Otto</th>
-                <td>markotto@test.com</td>
-                <td>555-555-5555</td>
-                <td>02-05-1982</td>
-            </tr>
-            <tr>
-                <th scope="row">Jacob Thornton</th>
-                <td>jthornton@test.com</td>
-                <td>314-555-1234</td>
-                <td>12-30-1999</td>
-            </tr>
-            <tr>
-                <th scope="row">Lisa Bird</th>
-                <td>lisabird@test.com</td>
-                <td>636-555-4321</td>
-                <td>09-13-1967</td>
-            </tr>
-        </tbody>
+          );
+        })}
+      </tbody>
     </table>
   );
 };
 
-export default EmployeeTable;
+export default ResultList;
