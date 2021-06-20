@@ -1,20 +1,25 @@
 import React from 'react';
 import './style.css';
 
-const SearchBar = (props) => {
+function SearchBar(props) {
   return (
-    <div className="search-bar">
-        <form> 
-            <input 
-            value={props.value} 
-            name="search" 
-            type="text"
-            placeholder="Search Employee Name..."
-            onChange={props.handleInputChange}
-            />
-        </form>
-    </div>
+    <form>
+      <div className="form-group">
+        <input
+          onChange={props.handleInputChange}
+          value={props.search}
+          name="search"
+          type="text"
+          className="form-control"
+          placeholder="Search Employee Name"
+          id="search"
+        />
+        <button onClick={props.handleFormSubmit} className="btn btn-primary mt-3">
+          Search
+        </button>
+      </div>
+    </form>
   );
-};
+}
 
 export default SearchBar;
