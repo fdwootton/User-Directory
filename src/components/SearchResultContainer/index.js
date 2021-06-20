@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Header from "../Header"
 import SearchBar from "../SearchBar";
 import ResultList from "../ResultList";
-import API from "../../utils/API";
+// import API from "../../utils/API";
 
 class SearchResultContainer extends Component {
   state = {
