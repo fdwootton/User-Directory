@@ -3,8 +3,6 @@
   ## **Description**
   This application utilizes React to display an employee directory.  The employees displayed are retrieved using the Random User API.
 
-  Click here to visit the deployed application on Heroku: [**Employee-Directory**](https://frozen-wave-08455.herokuapp.com/)
-
   ![Employee-Directory](./public/directory-screenshot.png)
 
   ## **License**
